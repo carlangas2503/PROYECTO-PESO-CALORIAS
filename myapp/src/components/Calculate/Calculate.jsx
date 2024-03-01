@@ -38,13 +38,19 @@ export default function Calculate(params) {
         let update = [...respuesta]
         if(!peso || !calorias) return alert('ambos campos deben de estar llenos y con numeros mayores a 0')
         let condicional  = true
+        arrPrueb.sort((a,b)=>{
+            return   b.calorias - a.calorias
+        })
         while(condicional){
             for(let i = 0;i < arrPrueb.length;i++){
                 const currentPeso = update.reduce((acu,ele)=>acu+ele.peso,0)
                 const currentCalo = update.reduce((acu,ele)=>acu+ele.calorias,0)
                 if(peso >= arrPrueb[i].peso + currentPeso){
                     update = [...update,arrPrueb[i]]
+                    continue;
                 }
+                
+                if(calorias <= currentCalo) break;
             }
             condicional = false
         }
