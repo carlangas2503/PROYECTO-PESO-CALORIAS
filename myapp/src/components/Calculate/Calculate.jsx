@@ -1,4 +1,6 @@
 import { useState } from "react"
+import style from './Calculate.module.css'
+import Card from "../Card/Card"
 
 export default function Calculate(params) {
     const [peso,setPeso] = useState(0)
@@ -35,7 +37,7 @@ export default function Calculate(params) {
     ]
     
     const calculateObj=()=>{
-        let update = [...respuesta]
+        let update = [{peso:0,calorias:0}]
         if(!peso || !calorias) return alert('ambos campos deben de estar llenos y con numeros mayores a 0')
         let condicional  = true
         arrPrueb.sort((a,b)=>{
@@ -49,11 +51,11 @@ export default function Calculate(params) {
                     update = [...update,arrPrueb[i]]
                     continue;
                 }
-                
                 if(calorias <= currentCalo) break;
             }
             condicional = false
         }
+        update.shift()
         setRespuesta(update)
     }
     const hanPes = (e) => {
@@ -65,28 +67,56 @@ export default function Calculate(params) {
         setCalorias(e.target.value)
     }
     return(
-        <div>
-            <h3>Peso máximo</h3>
-            <input type="number" placeholder="Peso" value={peso} onChange={hanPes}/>
+        <div className={style.allcontain}>
+            <div className={style.cotainerinputs}>
+                <div>
+                    <span>Peso máximo</span>
+                    <input 
+                    className={style.text} 
+                    type="number" 
+                    value={peso} 
+                    onChange={hanPes}/>
+                </div>
+                <div>
+                    <span>Calorias minimas</span>
+                    <input 
+                    className={style.text} 
+                    type="number"
+                    value={calorias} 
+                    onChange={hanCal}/>
+                </div>
+                <button 
+                className={style.calcular} 
+                onClick={calculateObj}
+                >Calcular</button>
+            </div>
             <br />
-            <h3>Calorias minimas</h3>
-            <input type="number" placeholder="Calorias" value={calorias} onChange={hanCal}/>
+            {respuesta[0].name?<h2 className={style.titulos} >Respuesta</h2>:null}
+            <div className={style.countCards} >
+                {
+                    respuesta[0].name?respuesta.map(({name,peso,calorias})=>{
+                        return(<Card 
+                            name={name} 
+                            peso={peso} 
+                            calorias={calorias} />)                
+                    }):null
+                }                
+            </div>
+
             <br />
-            <button onClick={calculateObj}>Calcular</button>
             <br />
-            {console.log(respuesta)}
-            <br />
-            {
-                arrPrueb.map(({name,peso,calorias})=>{
-                    return(
-                        <div>
-                          <div>{name}</div>
-                          <h4>Peso: {peso}</h4>
-                          <h4>Calorias:{calorias}</h4>
-                        </div>
-                    )
-                })
-            }
+            <h2 className={style.titulos} >Elementos</h2>
+            <div className={style.countCards} >
+                {
+                    arrPrueb.map(({name,peso,calorias})=>{
+                        return(<Card 
+                            name={name} 
+                            peso={peso} 
+                            calorias={calorias} />)
+                    })
+                }
+            </div>
+
         </div>
     )
 }

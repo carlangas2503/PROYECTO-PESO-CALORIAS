@@ -1,0 +1,27 @@
+.list{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+.list li{
+    margin: 10px 15px;
+    border-bottom: solid 1px black;
+    transition: all 0.7s;
+}
+.linkNS{
+    text-decoration: none;
+    color: inherit;
+}
+.list li:hover{
+    transform: scale(1.2);
+    margin:10px 25px
+}
+.counter{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #ffffff;
+}

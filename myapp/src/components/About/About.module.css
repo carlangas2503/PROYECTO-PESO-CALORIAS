@@ -1,0 +1,10 @@
+.counter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: #734a91;
+}
+.yo{
+    height: 20em;
+}

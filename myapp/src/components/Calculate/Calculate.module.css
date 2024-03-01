@@ -1,0 +1,45 @@
+
+.text{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+         appearance: none;
+ border: none;
+ outline: none;
+ border-bottom: 0.2em solid #734a91;
+ background: #a87bc7;
+ border-radius: 0.2em 0.2em 0 0;
+ padding: 0.4em;
+ color: #ffffff;
+}
+.allcontain{
+    margin-top: 10px;
+}
+.cotainerinputs{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+.calcular{
+    padding: 7px 15px;
+    background-color: #f1d7ff;
+    color: #a87bc7;
+    font-weight: bold;
+    border: 0.5px solid #a87bc7;
+    border-radius: 5px;
+    letter-spacing: 3px;
+    overflow: hidden;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.calcular:hover{
+    background: #a87bc7;
+    color: #f1d7ff;
+}
+.countCards{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+}
+.titulos{
+    width: 300px;
+    margin: 0 auto; 
+    color: #734a91;
+}
